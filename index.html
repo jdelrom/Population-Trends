@@ -26,6 +26,17 @@
         stroke-linecap: round;
         pointer-events: none;
     }
+
+    /* svg {
+        width: 100%;
+        height: auto;
+    } */
+/* 
+    .states {
+        width: 100%;
+        height: auto;
+    } */
+
 </style>
 <svg width="960" height="600"></svg>
 <script>
@@ -45,7 +56,8 @@
             });
         svg.append("path")
             .attr("class", "state-borders")
-            .attr("d", path(topojson.mesh(us, us.objects.states, function (a, b) { return a !== b; })));
+            .attr("d", path(topojson.mesh(us, us.objects.states, function (a, b) { return a !== b; })))
+            .attr("preserveAspectRatio", "xMinYMin");
     });
 </script>
 </body>

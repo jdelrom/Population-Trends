@@ -1,5 +1,5 @@
-export const totalPopulation = {};
-export const statesPopulation = {};
+const totalPopulation = {};
+const statesPopulation = {};
 
 d3.csv("./csv/us-race-population.csv")
     .row((d) => {

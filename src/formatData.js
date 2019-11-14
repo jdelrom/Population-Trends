@@ -1,3 +1,6 @@
+export const totalPopulation = {};
+export const statesPopulation = {};
+
 d3.csv("./csv/us-race-population.csv")
     .row((d) => {
         return {
@@ -22,8 +25,7 @@ d3.csv("./csv/us-race-population.csv")
         // debugger
         // window.data = data;
         // let states = [];
-        let totalPopulation = {};
-        let statesPopulation = {};
+        
 
         data.forEach(d => {
             if (d.state === 'United States') {
@@ -68,3 +70,6 @@ d3.csv("./csv/us-race-population.csv")
             }
         })
     });
+
+window.totalPopulation = totalPopulation;
+window.statesPopulation = statesPopulation;

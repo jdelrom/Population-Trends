@@ -1,0 +1,2 @@
+import {statesPopulation} from './formatData';
+

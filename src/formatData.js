@@ -4,6 +4,7 @@ const statesPopulation = {};
 d3.csv("./csv/us-race-population.csv")
     .row((d) => {
         return {
+            id: d.ID,
             state: d.NAME,
             race: +d.RACE,
             yr2000: d.POPESTIMATE2000,
@@ -73,3 +74,6 @@ d3.csv("./csv/us-race-population.csv")
 
 window.totalPopulation = totalPopulation;
 window.statesPopulation = statesPopulation;
+
+module.exports.totalPopulation = totalPopulation;
+module.exports.statesPopulation = statesPopulation;

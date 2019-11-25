@@ -1,1 +1,1 @@
-// import formatData from './formatData';
+import {totalPopulation, statesPopulation} from './formatData';

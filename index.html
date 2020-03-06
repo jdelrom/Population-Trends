@@ -4,12 +4,16 @@
 
 <head>
     <title>JavaScript Project 2.0</title>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script src="dragit.js" charset="utf-8"></script>
+    <!-- <script src="dragit.js" charset="utf-8"></script> -->
+    <!-- <script src="https://d3js.org/topojson.v1.min.js"></script> -->
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="./src/bundle.js"></script>
     <script src="https://unpkg.com/lodash@4.16.6"></script>
-    <script src="https://d3js.org/topojson.v2.min.js"></script>
-    <script src="./src/formatData.js"></script>
+    <!-- <script src="./src/formatData.js"></script> -->
+    <!-- <script src="./src/scatterChart.js"></script> -->
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
 </head>
 
 <body>
@@ -38,13 +42,14 @@
     } */
 
 </style>
-<svg width="960" height="600"></svg>
+<svg class="global" width="960" height="600"></svg>
 <script>
-    let svg = d3.select("svg");
+    let mapSVG = d3.select("svg");
+        
     let path = d3.geoPath();
     d3.json("https://d3js.org/us-10m.v1.json", function (error, us) {
-        if (error) throw error;
-        svg.append("g")
+        if (error) throw error;        
+        mapSVG.append("g")
             .attr("class", "states")
             .style('fill', 'green')
             .selectAll("path")
@@ -53,12 +58,35 @@
             .attr("d", path)
             .on('click', (e) => {
                 console.log(e)
+                d3.select(".global").style("display", "none")
+                d3.select(".states").style("display", "none")
+                d3.select(".state-borders").style("display", "none")
+                d3.select(".graph").style("display", "block");
             });
-        svg.append("path")
+
+        // d3.select("body").append("span")
+        //     .attr("class", "graph")
+        //     .style("height", 300)
+        //     .style("width", 300)
+        //     .style("display", "none")
+        //     .style("fill", "blue");
+
+        d3.select('body').append('div')
+            // .attr('cx', 50)
+            // .attr('cy', 50)
+            .attr('class', 'graph')
+            .style('display', 'none')
+            .style('width', '90vw')
+            .style('height', '75vh')
+            .style('background', 'black');
+
+        mapSVG.append("path")
             .attr("class", "state-borders")
             .attr("d", path(topojson.mesh(us, us.objects.states, function (a, b) { return a !== b; })))
             .attr("preserveAspectRatio", "xMinYMin");
     });
+
+    
 </script>
 </body>
 

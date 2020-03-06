@@ -44,18 +44,28 @@ d3.csv("./csv/us-race-population.csv")
                     yr2010: d.yr2010
                 }
             } else {
-                let state = d.state;
+                let id = d.id;
                 let race = d.race;
+                let state = d.state;
 
-                if (!statesPopulation[state]) {
-                    statesPopulation[state] = {};
-                }
-
+                // if (!statesPopulation[state]) {
+                //     statesPopulation[state] = {};
+                // } 
+                if (!statesPopulation[id]) {
+                    statesPopulation[id] = {};
+                }  // else if (!statesPopulation[id][state]) {
+                //     statesPopulation[id] = {};
+                // }
+                
+                // if (!!statesPopulation[id][state][race]) {
+                //     statesPopulation[id][state][race] = {};
+                // }
                 // if (!statesPopulation[state][race]) {
-                //     statesPopulation[state][race] = {};
+                //     statesPopulation[state][races] = {};
                 // }
 
-                statesPopulation[state][race] = {
+                statesPopulation[id] = {
+                        name: state,
                         yr2000: d.yr2000,
                         yr2001: d.yr2001,
                         yr2002: d.yr2002,
@@ -75,5 +85,7 @@ d3.csv("./csv/us-race-population.csv")
 window.totalPopulation = totalPopulation;
 window.statesPopulation = statesPopulation;
 
-module.exports.totalPopulation = totalPopulation;
-module.exports.statesPopulation = statesPopulation;
+const _totalPopulation = totalPopulation;
+export { _totalPopulation as totalPopulation };
+const _statesPopulation = statesPopulation;
+export { _statesPopulation as statesPopulation };

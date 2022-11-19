@@ -13,7 +13,7 @@
     "dependencies": {
         "lws": "^2.0.7",
         "webpack": "^4.33.0",
-        "webpack-cli": "^3.3.4",
+        "webpack-cli": "^3.3.12",
         "ws": "^7.2.0"
     }
 }
